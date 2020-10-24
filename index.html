@@ -218,7 +218,15 @@
       $(function () {
         var socket = io();
         window.socket = socket;
-        window.userId = uuidv4();
+        if (
+          sessionStorage.getItem("userId") &&
+          sessionStorage.getItem("userId").length > 0
+        ) {
+          window.userId = sessionStorage.getItem("userId");
+        } else {
+          window.userId = uuidv4();
+          sessionStorage.setItem("userId", window.userId);
+        }
 
         socket.on("vote", function (votes) {
           $("#messages").empty();
