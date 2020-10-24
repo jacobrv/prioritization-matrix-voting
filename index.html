@@ -79,6 +79,9 @@
       .vp3 {
         background: lightgray;
       }
+      .selected {
+        background: lightblue;
+      }
     </style>
   </head>
   <body>
@@ -95,43 +98,93 @@
       </div>
       <div class="row">
         <div class="col">(A) Severe</div>
-        <div class="col selectable vp1" onclick="sendSelection('A',1)">P1</div>
-        <div class="col selectable vp1" onclick="sendSelection('A',2)">P1</div>
-        <div class="col selectable vp1" onclick="sendSelection('A',3)">P1</div>
-        <div class="col selectable vp2" onclick="sendSelection('A',4)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('A',5)">P2</div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'A',1)">
+          P1
+        </div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'A',2)">
+          P1
+        </div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'A',3)">
+          P1
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'A',4)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'A',5)">
+          P2
+        </div>
       </div>
       <div class="row">
         <div class="col">(B) Major</div>
-        <div class="col selectable vp1" onclick="sendSelection('B',1)">P1</div>
-        <div class="col selectable vp1" onclick="sendSelection('B',2)">P1</div>
-        <div class="col selectable vp2" onclick="sendSelection('B',3)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('B',4)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('B',5)">P2</div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'B',1)">
+          P1
+        </div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'B',2)">
+          P1
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'B',3)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'B',4)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'B',5)">
+          P2
+        </div>
       </div>
       <div class="row">
         <div class="col">(C) Moderate</div>
-        <div class="col selectable vp1" onclick="sendSelection('C',1)">P1</div>
-        <div class="col selectable vp2" onclick="sendSelection('C',2)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('C',3)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('C',4)">P2</div>
-        <div class="col selectable vp3" onclick="sendSelection('C',5)">P3</div>
+        <div class="col selectable vp1" onclick="sendSelection(this,'C',1)">
+          P1
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'C',2)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'C',3)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'C',4)">
+          P2
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'C',5)">
+          P3
+        </div>
       </div>
       <div class="row">
         <div class="col">(D) Minor</div>
-        <div class="col selectable vp2" onclick="sendSelection('D',1)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('D',2)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('D',3)">P2</div>
-        <div class="col selectable vp3" onclick="sendSelection('D',4)">P3</div>
-        <div class="col selectable vp3" onclick="sendSelection('D',5)">P3</div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'D',1)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'D',2)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'D',3)">
+          P2
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'D',4)">
+          P3
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'D',5)">
+          P3
+        </div>
       </div>
       <div class="row">
         <div class="col">(E) Insignificant</div>
-        <div class="col selectable vp2" onclick="sendSelection('E',1)">P2</div>
-        <div class="col selectable vp2" onclick="sendSelection('E',2)">P2</div>
-        <div class="col selectable vp3" onclick="sendSelection('E',3)">P3</div>
-        <div class="col selectable vp3" onclick="sendSelection('E',4)">P3</div>
-        <div class="col selectable vp3" onclick="sendSelection('E',5)">P3</div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'E',1)">
+          P2
+        </div>
+        <div class="col selectable vp2" onclick="sendSelection(this,'E',2)">
+          P2
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'E',3)">
+          P3
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'E',4)">
+          P3
+        </div>
+        <div class="col selectable vp3" onclick="sendSelection(this,'E',5)">
+          P3
+        </div>
       </div>
     </div>
 
@@ -140,13 +193,16 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
-      function sendSelection(severity, frequency) {
+      function sendSelection(elem, severity, frequency) {
         var userId = window.userId;
+        $(".selected").removeClass("selected");
+        $(elem).addClass("selected");
         window.socket.emit("vote", { severity, frequency, userId });
       }
 
       function clearSelections(severity, frequency) {
         var userId = window.userId;
+        $(".selected").removeClass("selected");
         window.socket.emit("clear", { userId });
       }
 
