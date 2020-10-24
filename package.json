@@ -1,0 +1,9 @@
+{
+    "name": "vote-matrix",
+    "version": "0.0.1",
+    "description": "A voting app with a matrix layout",
+    "dependencies": {
+        "express": "^4.17.1",
+        "socket.io": "^2.3.0"
+    }
+}
