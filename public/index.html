@@ -2,92 +2,7 @@
 <html>
   <head>
     <title>Prioritization Matrix Voting</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font: 13px Helvetica, Arial;
-      }
-      form {
-        background: #000;
-        padding: 3px;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-      form input {
-        border: 0;
-        padding: 10px;
-        width: 90%;
-        margin-right: 0.5%;
-      }
-      form button {
-        width: 9%;
-        background: rgb(130, 224, 255);
-        border: none;
-        padding: 10px;
-      }
-      #messages {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-      #messages li {
-        padding: 5px 10px;
-      }
-      #messages li:nth-child(odd) {
-        background: #eee;
-      }
-      .matrix {
-        font-size: 0;
-        margin-bottom: 20px;
-      }
-      .row {
-        font-size: 1rem;
-        width: 1000px;
-        height: 40px;
-        margin: 5px 0;
-        display: block;
-      }
-      .col {
-        height: 40px;
-        width: 150px;
-        margin: 0;
-        display: inline-block;
-        padding-top: 10px;
-        vertical-align: middle;
-      }
-      .selectable {
-        text-align: center;
-      }
-      .selectable:hover {
-        background: lightblue;
-        cursor: pointer;
-      }
-      .header-row .col {
-        text-align: center;
-      }
-      .vp1 {
-        background: pink;
-      }
-      .vp2 {
-        background: lightgoldenrodyellow;
-      }
-      .vp3 {
-        background: lightgray;
-      }
-      .selected {
-        background: lightblue;
-        border: solid 2px black;
-        padding-top: 8px;
-      }
-      body {
-        padding: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="/index.css" />
   </head>
   <body>
     <div class="matrix">
@@ -174,7 +89,7 @@
         </div>
       </div>
       <div class="row rE">
-        <div class="col">(E) Insignificant</div>
+        <div class="col">(E) Not Significant</div>
         <div class="col selectable vp2 c1" onclick="sendSelection(this,'E',1)">
           P2
         </div>
@@ -200,67 +115,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script>
-      function sendSelection(elem, severity, frequency) {
-        var userId = window.userId;
-
-        if ($(elem).hasClass("selected")) {
-          window.socket.emit("unvote", { userId });
-        } else {
-          window.socket.emit("vote", { severity, frequency, userId });
-        }
-      }
-
-      function clearSelections(severity, frequency) {
-        if (confirm("Are you sure you want to clear everyone's votes?")) {
-          var userId = window.userId;
-          window.socket.emit("clear", { userId });
-        }
-      }
-
-      function uuidv4() {
-        return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-          (
-            c ^
-            (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-          ).toString(16)
-        );
-      }
-
-      $(function () {
-        var socket = io();
-        window.socket = socket;
-        if (
-          sessionStorage.getItem("userId") &&
-          sessionStorage.getItem("userId").length > 0
-        ) {
-          window.userId = sessionStorage.getItem("userId");
-        } else {
-          window.userId = uuidv4();
-          sessionStorage.setItem("userId", window.userId);
-        }
-
-        socket.on("vote", function (votes) {
-          $("#results h3").text("");
-          $(".selected").removeClass("selected");
-
-          if (votes && votes.length > 0) {
-            var msgs = [];
-            var userId = window.userId;
-            for (let i = 0; i < votes.length; i++) {
-              msgs.push(votes[i].severity + votes[i].frequency);
-
-              if (votes[i].userId === userId) {
-                $(`.r${votes[i].severity} .c${votes[i].frequency}`).addClass(
-                  "selected"
-                );
-              }
-            }
-            msgs = msgs.sort();
-            $("#results h3").text(msgs.join(", "));
-          }
-        });
-      });
-    </script>
+    <script src="/index.js"></script>
   </body>
 </html>
