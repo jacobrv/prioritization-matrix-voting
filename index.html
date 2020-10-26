@@ -88,7 +88,7 @@
     <div class="matrix">
       <div class="row header-row">
         <div class="col">
-          <button onclick="clearSelections()">CLEAR</button>
+          <button onclick="clearSelections()">CLEAR ALL VOTES</button>
         </div>
         <div class="col">(1) Almost Always</div>
         <div class="col">(2) Common</div>
@@ -201,9 +201,11 @@
       }
 
       function clearSelections(severity, frequency) {
-        var userId = window.userId;
-        $(".selected").removeClass("selected");
-        window.socket.emit("clear", { userId });
+        if (confirm("Are you sure you want to clear everyone's votes?")) {
+          var userId = window.userId;
+          $(".selected").removeClass("selected");
+          window.socket.emit("clear", { userId });
+        }
       }
 
       function uuidv4() {
@@ -230,11 +232,12 @@
 
         socket.on("vote", function (votes) {
           $("#messages").empty();
+          var msgs = [];
           for (let i = 0; i < votes.length; i++) {
-            $("#messages").append(
-              $("<li>").text(votes[i].severity + votes[i].frequency)
-            );
+            msgs.push(votes[i].severity + votes[i].frequency);
           }
+          msgs = msgs.sort();
+          $("#messages").append($("<li>").text(msgs.join(", ")));
         });
         socket.on("clear", function (msg) {
           $("#messages").empty();
