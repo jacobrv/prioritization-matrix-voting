@@ -81,6 +81,11 @@
       }
       .selected {
         background: lightblue;
+        border: solid 2px black;
+        padding-top: 8px;
+      }
+      body {
+        padding: 10px;
       }
     </style>
   </head>
@@ -96,114 +101,119 @@
         <div class="col">(4) Uncommon</div>
         <div class="col">(5) Rare</div>
       </div>
-      <div class="row">
+      <div class="row rA">
         <div class="col">(A) Severe</div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'A',1)">
+        <div class="col selectable vp1 c1" onclick="sendSelection(this,'A',1)">
           P1
         </div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'A',2)">
+        <div class="col selectable vp1 c2" onclick="sendSelection(this,'A',2)">
           P1
         </div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'A',3)">
+        <div class="col selectable vp1 c3" onclick="sendSelection(this,'A',3)">
           P1
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'A',4)">
+        <div class="col selectable vp2 c4" onclick="sendSelection(this,'A',4)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'A',5)">
+        <div class="col selectable vp2 c5" onclick="sendSelection(this,'A',5)">
           P2
         </div>
       </div>
-      <div class="row">
+      <div class="row rB">
         <div class="col">(B) Major</div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'B',1)">
+        <div class="col selectable vp1 c1" onclick="sendSelection(this,'B',1)">
           P1
         </div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'B',2)">
+        <div class="col selectable vp1 c2" onclick="sendSelection(this,'B',2)">
           P1
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'B',3)">
+        <div class="col selectable vp2 c3" onclick="sendSelection(this,'B',3)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'B',4)">
+        <div class="col selectable vp2 c4" onclick="sendSelection(this,'B',4)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'B',5)">
+        <div class="col selectable vp2 c5" onclick="sendSelection(this,'B',5)">
           P2
         </div>
       </div>
-      <div class="row">
+      <div class="row rC">
         <div class="col">(C) Moderate</div>
-        <div class="col selectable vp1" onclick="sendSelection(this,'C',1)">
+        <div class="col selectable vp1 c1" onclick="sendSelection(this,'C',1)">
           P1
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'C',2)">
+        <div class="col selectable vp2 c2" onclick="sendSelection(this,'C',2)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'C',3)">
+        <div class="col selectable vp2 c3" onclick="sendSelection(this,'C',3)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'C',4)">
+        <div class="col selectable vp2 c4" onclick="sendSelection(this,'C',4)">
           P2
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'C',5)">
+        <div class="col selectable vp3 c5" onclick="sendSelection(this,'C',5)">
           P3
         </div>
       </div>
-      <div class="row">
+      <div class="row rD">
         <div class="col">(D) Minor</div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'D',1)">
+        <div class="col selectable vp2 c1" onclick="sendSelection(this,'D',1)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'D',2)">
+        <div class="col selectable vp2 c2" onclick="sendSelection(this,'D',2)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'D',3)">
+        <div class="col selectable vp2 c3" onclick="sendSelection(this,'D',3)">
           P2
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'D',4)">
+        <div class="col selectable vp3 c4" onclick="sendSelection(this,'D',4)">
           P3
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'D',5)">
+        <div class="col selectable vp3 c5" onclick="sendSelection(this,'D',5)">
           P3
         </div>
       </div>
-      <div class="row">
+      <div class="row rE">
         <div class="col">(E) Insignificant</div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'E',1)">
+        <div class="col selectable vp2 c1" onclick="sendSelection(this,'E',1)">
           P2
         </div>
-        <div class="col selectable vp2" onclick="sendSelection(this,'E',2)">
+        <div class="col selectable vp2 c2" onclick="sendSelection(this,'E',2)">
           P2
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'E',3)">
+        <div class="col selectable vp3 c3" onclick="sendSelection(this,'E',3)">
           P3
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'E',4)">
+        <div class="col selectable vp3 c4" onclick="sendSelection(this,'E',4)">
           P3
         </div>
-        <div class="col selectable vp3" onclick="sendSelection(this,'E',5)">
+        <div class="col selectable vp3 c5" onclick="sendSelection(this,'E',5)">
           P3
         </div>
       </div>
     </div>
 
-    <ul id="messages"></ul>
+    <h2>Results</h2>
+    <div id="results" class="results">
+      <h3></h3>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
       function sendSelection(elem, severity, frequency) {
         var userId = window.userId;
-        $(".selected").removeClass("selected");
-        $(elem).addClass("selected");
-        window.socket.emit("vote", { severity, frequency, userId });
+
+        if ($(elem).hasClass("selected")) {
+          window.socket.emit("unvote", { userId });
+        } else {
+          window.socket.emit("vote", { severity, frequency, userId });
+        }
       }
 
       function clearSelections(severity, frequency) {
         if (confirm("Are you sure you want to clear everyone's votes?")) {
           var userId = window.userId;
-          $(".selected").removeClass("selected");
           window.socket.emit("clear", { userId });
         }
       }
@@ -231,16 +241,24 @@
         }
 
         socket.on("vote", function (votes) {
-          $("#messages").empty();
-          var msgs = [];
-          for (let i = 0; i < votes.length; i++) {
-            msgs.push(votes[i].severity + votes[i].frequency);
+          $("#results h3").text("");
+          $(".selected").removeClass("selected");
+
+          if (votes && votes.length > 0) {
+            var msgs = [];
+            var userId = window.userId;
+            for (let i = 0; i < votes.length; i++) {
+              msgs.push(votes[i].severity + votes[i].frequency);
+
+              if (votes[i].userId === userId) {
+                $(`.r${votes[i].severity} .c${votes[i].frequency}`).addClass(
+                  "selected"
+                );
+              }
+            }
+            msgs = msgs.sort();
+            $("#results h3").text(msgs.join(", "));
           }
-          msgs = msgs.sort();
-          $("#messages").append($("<li>").text(msgs.join(", ")));
-        });
-        socket.on("clear", function (msg) {
-          $("#messages").empty();
         });
       });
     </script>

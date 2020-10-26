@@ -33,10 +33,17 @@ io.on("connection", (socket) => {
     io.emit("vote", votes);
   });
 
+  socket.on("unvote", (msg) => {
+    votes = votes.filter((row) => {
+      return row.userId !== msg.userId;
+    });
+    io.emit("vote", votes);
+  });
+
   socket.on("clear", (msg) => {
     console.log(msg);
     votes = [];
-    io.emit("clear", msg);
+    io.emit("vote", votes);
   });
 });
 const PORT = process.env.PORT || 3000;
