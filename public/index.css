@@ -65,6 +65,9 @@ form button {
 .header-row .col {
   text-align: center;
 }
+.vp0 {
+  background: lightcoral;
+}
 .vp1 {
   background: pink;
 }
@@ -72,7 +75,10 @@ form button {
   background: lightgoldenrodyellow;
 }
 .vp3 {
-  background: lightgray;
+  background: lightgreen;
+}
+.vp4 {
+  background: mediumseagreen;
 }
 .selected {
   background: lightblue;
