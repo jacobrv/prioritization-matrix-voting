@@ -54,6 +54,7 @@ form button {
   display: inline-block;
   padding-top: 10px;
   vertical-align: middle;
+  text-align: center;
 }
 .selectable {
   text-align: center;
@@ -81,6 +82,9 @@ form button {
   background: mediumseagreen;
 }
 .selected {
+  background: lightblue;
+}
+.selectable.selected {
   background: lightblue;
   border: solid 2px black;
   padding-top: 8px;

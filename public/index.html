@@ -10,107 +10,86 @@
         <div class="col">
           <button onclick="clearSelections()">CLEAR ALL VOTES</button>
         </div>
-        <div class="col">(1) Almost Always</div>
-        <div class="col">(2) Common</div>
-        <div class="col">(3) Possible</div>
-        <div class="col">(4) Uncommon</div>
-        <div class="col">(5) Rare</div>
+        <div class="col selectable F1" onclick="sendSelection(this,null,1)">
+          (1) Almost Always
+        </div>
+        <div class="col selectable F2" onclick="sendSelection(this,null,2)">
+          (2) Common
+        </div>
+        <div class="col selectable F3" onclick="sendSelection(this,null,3)">
+          (3) Possible
+        </div>
+        <div class="col selectable F4" onclick="sendSelection(this,null,4)">
+          (4) Uncommon
+        </div>
+        <div class="col selectable F5" onclick="sendSelection(this,null,5)">
+          (5) Rare
+        </div>
       </div>
       <div class="row rA">
-        <div class="col">(A) Severe</div>
-        <div class="col selectable vp0 c1" onclick="sendSelection(this,'A',1)">
-          P0
+        <div class="col selectable SA" onclick="sendSelection(this,'A',null)">
+          (A) Severe
         </div>
-        <div class="col selectable vp1 c2" onclick="sendSelection(this,'A',2)">
-          P1
-        </div>
-        <div class="col selectable vp1 c3" onclick="sendSelection(this,'A',3)">
-          P1
-        </div>
-        <div class="col selectable vp2 c4" onclick="sendSelection(this,'A',4)">
-          P2
-        </div>
-        <div class="col selectable vp2 c5" onclick="sendSelection(this,'A',5)">
-          P2
-        </div>
+        <div class="col vp0 c1">P0</div>
+        <div class="col vp1 c2">P1</div>
+        <div class="col vp1 c3">P1</div>
+        <div class="col vp2 c4">P2</div>
+        <div class="col vp2 c5">P2</div>
       </div>
       <div class="row rB">
-        <div class="col">(B) Major</div>
-        <div class="col selectable vp1 c1" onclick="sendSelection(this,'B',1)">
-          P1
+        <div class="col selectable SB" onclick="sendSelection(this,'B',null)">
+          (B) Major
         </div>
-        <div class="col selectable vp1 c2" onclick="sendSelection(this,'B',2)">
-          P1
-        </div>
-        <div class="col selectable vp2 c3" onclick="sendSelection(this,'B',3)">
-          P2
-        </div>
-        <div class="col selectable vp2 c4" onclick="sendSelection(this,'B',4)">
-          P2
-        </div>
-        <div class="col selectable vp3 c5" onclick="sendSelection(this,'B',5)">
-          P3
-        </div>
+        <div class="col vp1 c1">P1</div>
+        <div class="col vp1 c2">P1</div>
+        <div class="col vp2 c3">P2</div>
+        <div class="col vp2 c4">P2</div>
+        <div class="col vp3 c5">P3</div>
       </div>
       <div class="row rC">
-        <div class="col">(C) Moderate</div>
-        <div class="col selectable vp1 c1" onclick="sendSelection(this,'C',1)">
-          P1
+        <div class="col selectable SC" onclick="sendSelection(this,'C',null)">
+          (C) Moderate
         </div>
-        <div class="col selectable vp2 c2" onclick="sendSelection(this,'C',2)">
-          P2
-        </div>
-        <div class="col selectable vp2 c3" onclick="sendSelection(this,'C',3)">
-          P2
-        </div>
-        <div class="col selectable vp3 c4" onclick="sendSelection(this,'C',4)">
-          P3
-        </div>
-        <div class="col selectable vp3 c5" onclick="sendSelection(this,'C',5)">
-          P3
-        </div>
+        <div class="col vp1 c1">P1</div>
+        <div class="col vp2 c2">P2</div>
+        <div class="col vp2 c3">P2</div>
+        <div class="col vp3 c4">P3</div>
+        <div class="col vp3 c5">P3</div>
       </div>
       <div class="row rD">
-        <div class="col">(D) Minor</div>
-        <div class="col selectable vp2 c1" onclick="sendSelection(this,'D',1)">
-          P2
+        <div class="col selectable SD" onclick="sendSelection(this,'D',null)">
+          (D) Minor
         </div>
-        <div class="col selectable vp2 c2" onclick="sendSelection(this,'D',2)">
-          P2
-        </div>
-        <div class="col selectable vp3 c3" onclick="sendSelection(this,'D',3)">
-          P3
-        </div>
-        <div class="col selectable vp3 c4" onclick="sendSelection(this,'D',4)">
-          P3
-        </div>
-        <div class="col selectable vp4 c5" onclick="sendSelection(this,'D',5)">
-          P4
-        </div>
+        <div class="col vp2 c1">P2</div>
+        <div class="col vp2 c2">P2</div>
+        <div class="col vp3 c3">P3</div>
+        <div class="col vp3 c4">P3</div>
+        <div class="col vp4 c5">P4</div>
       </div>
       <div class="row rE">
-        <div class="col">(E) Not Significant</div>
-        <div class="col selectable vp2 c1" onclick="sendSelection(this,'E',1)">
-          P2
+        <div class="col selectable SE" onclick="sendSelection(this,'E',null)">
+          (E) Not Significant
         </div>
-        <div class="col selectable vp3 c2" onclick="sendSelection(this,'E',2)">
-          P3
-        </div>
-        <div class="col selectable vp3 c3" onclick="sendSelection(this,'E',3)">
-          P3
-        </div>
-        <div class="col selectable vp4 c4" onclick="sendSelection(this,'E',4)">
-          P4
-        </div>
-        <div class="col selectable vp4 c5" onclick="sendSelection(this,'E',5)">
-          P4
-        </div>
+        <div class="col vp2 c1">P2</div>
+        <div class="col vp3 c2">P3</div>
+        <div class="col vp3 c3">P3</div>
+        <div class="col vp4 c4">P4</div>
+        <div class="col vp4 c5">P4</div>
       </div>
     </div>
 
-    <h2>Results</h2>
-    <div id="results" class="results">
+    <h2>Frequency</h2>
+    <div id="results-frequency" class="results">
       <h3></h3>
+    </div>
+    <br />
+    <h2>Severity</h2>
+    <div id="results-severity" class="results">
+      <h3></h3>
+    </div>
+    <br />
+    <div>
+      <button type="button" onclick="copyResults()">Copy Results</button>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
